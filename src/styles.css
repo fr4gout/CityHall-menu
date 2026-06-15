@@ -1,0 +1,222 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: var(--radius);
+  --radius-md: var(--radius);
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+
+  --color-background: rgba(6, 8, 16, 1);
+  --color-foreground: var(--tx);
+  --color-surface: var(--bg-surface);
+  --color-card: var(--bg-surface);
+  --color-card-foreground: var(--tx);
+  --color-popover: var(--bg-surface);
+  --color-popover-foreground: var(--tx);
+  --color-primary: var(--primary);
+  --color-primary-foreground: rgba(6, 8, 16, 1);
+  --color-primary-hover: #8dcdff;
+  --color-secondary: var(--bg-row);
+  --color-secondary-foreground: var(--tx);
+  --color-muted: var(--bg-row);
+  --color-muted-foreground: var(--tx-2);
+  --color-accent: var(--primary);
+  --color-accent-foreground: rgba(6, 8, 16, 1);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-border: var(--bd);
+  --color-input: var(--bd);
+  --color-ring: var(--bd-primary);
+  --color-bg-panel: var(--bg-panel);
+
+  --font-display: "Rajdhani", system-ui, sans-serif;
+  --font-sans: "Rajdhani", system-ui, sans-serif;
+}
+
+:root {
+  --radius-shell: 0.375rem;
+  --radius: var(--radius-shell);
+
+  /* Obsidian translucent tokens */
+  --bg-panel: rgba(6, 8, 16, 0.76);
+  --bg-surface: rgba(6, 8, 16, 0.45);
+  --bg-row: rgba(255, 255, 255, 0.03);
+  --bg-row-alt: rgba(255, 255, 255, 0.055);
+
+  --bd: rgba(255, 255, 255, 0.09);
+  --bd-strong: rgba(255, 255, 255, 0.14);
+  --bd-primary: rgba(107, 191, 255, 0.28);
+
+  --primary: #6bbfff;
+  --primary-08: rgba(107, 191, 255, 0.08);
+  --primary-15: rgba(107, 191, 255, 0.15);
+  --primary-30: rgba(107, 191, 255, 0.3);
+
+  --tx: rgba(255, 255, 255, 0.88);
+  --tx-2: rgba(255, 255, 255, 0.5);
+  --tx-3: rgba(255, 255, 255, 0.25);
+
+  --c-green: #4ade80;
+  --c-orange: #fb923c;
+  --c-red: #f87171;
+  --c-purple: #c084fc;
+  --c-blue: #6bbfff;
+  --c-slate: #94a3b8;
+
+  /* Legacy aliases for existing components */
+  --background: rgba(6, 8, 16, 1);
+  --foreground: var(--tx);
+  --surface: var(--bg-surface);
+  --card: var(--bg-surface);
+  --card-foreground: var(--tx);
+  --popover: var(--bg-surface);
+  --popover-foreground: var(--tx);
+  --primary-foreground: rgba(6, 8, 16, 1);
+  --primary-hover: #8dcdff;
+  --secondary: var(--bg-row);
+  --secondary-foreground: var(--tx);
+  --muted: var(--bg-row);
+  --muted-foreground: var(--tx-2);
+  --accent: var(--primary);
+  --accent-foreground: rgba(6, 8, 16, 1);
+
+  --destructive: #f87171;
+  --destructive-foreground: rgba(255, 255, 255, 0.88);
+  --success: #4ade80;
+  --warning: #fb923c;
+
+  --border: var(--bd);
+  --input: var(--bd);
+  --ring: var(--bd-primary);
+
+  --accent-intensity: 1;
+}
+
+@utility panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--bd-strong);
+  border-radius: var(--radius-shell);
+}
+
+@utility panel-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--bd);
+  border-radius: var(--radius-shell);
+}
+
+@utility bg-row {
+  background: var(--bg-row);
+}
+
+@utility bg-row-alt {
+  background: var(--bg-row-alt);
+}
+
+@utility glow-primary {
+  box-shadow:
+    0 0 0 1px var(--primary-30),
+    0 10px 40px -10px var(--primary-08),
+    inset 0 1px 0 var(--primary-15);
+}
+
+@utility text-glow {
+  text-shadow: 0 0 18px var(--primary-30);
+}
+
+@utility scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bd) transparent;
+}
+
+@utility panel-sharp {
+  border-radius: var(--radius-shell);
+}
+
+@utility control-radius {
+  border-radius: var(--radius-shell);
+}
+
+@utility seal-watermark {
+  top: 50%;
+  left: calc(240px + (100% - 240px - var(--right-col, 300px)) / 2);
+  width: clamp(300px, 46vw, 560px);
+  transform: translate(-50%, -50%);
+  border-radius: var(--radius-shell);
+  opacity: 0.09;
+  mix-blend-mode: screen;
+  filter: saturate(0.85) brightness(1.1);
+  mask-image: radial-gradient(circle at center, black 35%, transparent 70%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    overflow: hidden;
+    background-image:
+      radial-gradient(1200px 600px at 70% -10%, var(--primary-08), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, var(--primary-08), transparent 60%);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: 0.04em;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 var(--primary-30);
+  }
+
+  50% {
+    box-shadow: 0 0 24px 4px var(--primary-30);
+  }
+}
+
+@keyframes laser-sweep {
+  0% {
+    transform: translateX(-120%) skewX(-12deg);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(220%) skewX(-12deg);
+    opacity: 0;
+  }
+}
+
+@utility laser-sweep {
+  animation: laser-sweep 1.4s ease-in-out infinite;
+}
